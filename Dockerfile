@@ -23,7 +23,7 @@ RUN apt-get -qq update \
 RUN locale-gen en_US.UTF-8
 ENV LANG='en_US.UTF-8' LANGUAGE='en_US:en' LC_ALL='en_US.UTF-8'
 
-RUN curl -s https://dl.google.com/android/repository/commandlinetools-linux-${VERSION_TOOLS}_latest.zip > /tools.zip \
+RUN curl -s https://github.com/lintamathew95/sample-repo.git > /tools.zip \
  && mkdir -p ${ANDROID_HOME}/cmdline-tools \
  && unzip /tools.zip -d ${ANDROID_HOME}/cmdline-tools \
  && rm -v /tools.zip
