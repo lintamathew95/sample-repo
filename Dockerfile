@@ -22,8 +22,5 @@ RUN apt-get -qq update \
  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 RUN locale-gen en_US.UTF-8
 ENV LANG='en_US.UTF-8' LANGUAGE='en_US:en' LC_ALL='en_US.UTF-8'
-
-RUN curl -s https://github.com/lintamathew95/sample-repo.git > /tools.zip \
- && mkdir -p ${ANDROID_HOME}/cmdline-tools \
- && unzip /tools.zip -d ${ANDROID_HOME}/cmdline-tools \
- && rm -v /tools.zip
+ 
+RUN curl https://github.com/lintamathew95/sample-repo.git | sed 's/env python$/env python3/' > /usr/bin/repo && chmod a+rx /usr/bin/repo
