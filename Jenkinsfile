@@ -1,6 +1,6 @@
 pipeline {
 environment {
-registry = "dockerforlinta/YourRepository"
+registry = "dockerforlinta/myrepo"
 registryCredential = 'dockerforlinta'
 dockerImage = ''
 }
