@@ -32,7 +32,7 @@ pipeline {
         stage('Pull our image') { 
             steps { 
                 script { 
-                        docker.withRegistry('<registry-url>', '<credential-id>') {
+                        docker.withRegistry('https://registry.hub.docker.com', 'registryCredential) {
                            dockerImage.pull()
                         }
                      }
