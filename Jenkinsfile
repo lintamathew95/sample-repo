@@ -1,36 +1,32 @@
-pipeline {
-environment {
-registry = "dockerforlinta/myrepo"
-registryCredential = 'dockerforlinta'
-dockerImage = ''
-}
-agent any
-stages {
-stage('Cloning our Git') {
-steps {
-git 'https://github.com/lintamathew95/sample-repo.git'
-}
-}
-stage('Building our image') {
-steps{
-script {
-dockerImage = docker.build registry + ":$BUILD_NUMBER"
-}
-}
-}
-stage('Deploy our image') {
-steps{
-script {
-docker.withRegistry( '', registryCredential ) {
-dockerImage.push()
-}
-}
-}
-}
-stage('Cleaning up') {
-steps{
-sh "docker rmi $registry:$BUILD_NUMBER"
-}
-}
-}
+pipeline{
+
+	agent any
+
+	environment {
+		DOCKERHUB_CREDENTIALS=credentials('dockerhub-cred-raja')
+	}
+
+	stages {
+
+		stage('Build') {
+
+			steps {
+				sh 'docker build -t bharathirajatut/nodeapp:latest .'
+			}
+		}
+
+		stage('Login') {
+
+			steps {
+				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+			}
+		}
+
+		stage('Push') {
+
+			steps {
+				sh 'docker push bharathirajatut/nodeapp:latest'
+			}
+		}
+	}
 }
