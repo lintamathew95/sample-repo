@@ -29,6 +29,18 @@ pipeline {
                 } 
             }
         } 
+        stage('Pull our image') { 
+            steps { 
+                script { 
+                        docker.withRegistry('<registry-url>', '<credential-id>') {
+                           dockerImage.pull()
+                        }
+                     }
+                } 
+            }
+        } 
+        
+        
         stage('Cleaning up') { 
             steps { 
                 sh "docker rmi $registry:$BUILD_NUMBER" 
