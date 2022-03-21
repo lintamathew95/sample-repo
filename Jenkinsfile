@@ -3,7 +3,7 @@ pipeline{
 	agent any
 
 	environment {
-		DOCKERHUB_CREDENTIALS=credentials('dockerforlinta')
+		DOCKERHUB_CREDENTIALS=credentials('DockerHub')
 	}
 
 	stages {
