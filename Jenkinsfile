@@ -9,7 +9,7 @@ pipeline {
         registry = "dockeraccountformee/myrepo" 
 
 
-        registryCredential = 'dockeraccountformee' 
+        registryCredential = 'dockeraccountformee-dockerhub' 
 
 
         dockerImage = '' 
