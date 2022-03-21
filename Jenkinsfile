@@ -6,10 +6,10 @@ pipeline {
 
 
 
-        registry = "dockerforlinta/myrepo" 
+        registry = "dockeraccountformee/myrepo" 
 
 
-        registryCredential = 'dockerforlinta' 
+        registryCredential = 'dockeraccountformee' 
 
 
         dockerImage = '' 
