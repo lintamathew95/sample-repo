@@ -6,10 +6,10 @@ pipeline {
 
 
 
-        registry = "YourDockerhubAccount/YourRepository" 
+        registry = "dockerforlinta/myRepository" 
 
 
-        registryCredential = 'dockerhub_id' 
+        registryCredential = 'dockerforlinta' 
 
 
         dockerImage = '' 
@@ -31,7 +31,7 @@ pipeline {
             steps { 
 
 
-                git 'https://github.com/YourGithubAccount/YourGithubRepository.git' 
+                git 'https://github.com/lintamathew95/sample-repo.git' 
 
 
 
