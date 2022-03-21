@@ -38,7 +38,7 @@ pipeline {
                      }
                 } 
             }
-        stage('Pull our image') { 
+         stage('Run as container') { 
             steps { 
                 script { 
                         docker.withRegistry('https://registry.hub.docker.com', registryCredential) {
