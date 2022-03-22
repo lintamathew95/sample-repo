@@ -41,11 +41,10 @@ pipeline {
          stage('Run as container') { 
             steps { 
                 script { 
-//                         docker.withRegistry('https://registry.hub.docker.com', registryCredential) {
-//                            dockerImage.run()
+                    docker.withRegistry('https://registry.hub.docker.com', registryCredential) {
+                            dockerImage.run()
                            
-//                         }
-                     docker run  -d -p 8080:80 registry
+                        }
                      }
                 } 
             }
