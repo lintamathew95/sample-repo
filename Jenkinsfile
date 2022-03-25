@@ -2,10 +2,9 @@ pipeline {
 
     environment { 
 
-        registry = "YourDockerhubAccount/YourRepository" 
+        registry = "dockeraccountformee/myrepo" 
 
-        registryCredential = 'dockerhub_id' 
-
+        registryCredential = 'dockeraccountformee-dockerhub' 
 
         dockerImage = '' 
 
@@ -17,7 +16,7 @@ pipeline {
 
             steps { 
 
-                git 'https://github.com/YourGithubAccount/YourGithubRepository.git' 
+                git 'https://github.com/lintamathew95/sample-repo.git' 
 
             }
 
