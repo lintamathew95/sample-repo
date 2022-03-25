@@ -20,32 +20,32 @@ pipeline {
       }
         stage('Deploy the image') { 
             steps { 
-                script { 
+              //  script { 
 
                 //    docker.withRegistry( '', registryCredential ) { 
                 //        dockerImage.push() 
                 //   }
 
-                } 
+               // } 
             }
         } 
         stage('Pull the image') { 
             steps { 
-                script { 
+               // script { 
                       //  docker.withRegistry('https://registry.hub.docker.com', registryCredential) {
                        //    dockerImage.pull()
                       //  }
-                     }
+                    // }
                 } 
             }
          stage('Run as images container') { 
             steps { 
-                script { 
+               // script { 
                   //  docker.withRegistry('https://registry.hub.docker.com', registryCredential) {
                       //      dockerImage.run()
                            
                     //    }
-                     }
+                  //   }
                 } 
             }
               
