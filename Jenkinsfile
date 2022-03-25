@@ -6,19 +6,19 @@ pipeline {
     }
     agent any 
     stages { 
-        stage('Cloning our Git') { 
+        stage('Clone the repo') { 
             steps { 
                 git 'https://github.com/lintamathew95/sample-repo.git' 
             }
         } 
-        stage('Building our image') { 
+        stage('Building the docker image') { 
             steps { 
                 script { 
                  dockerImage = docker.build registry + ":$BUILD_NUMBER"
                 }
             } 
       }
-        stage('Deploy our image') { 
+        stage('Deploy the image') { 
             steps { 
                 script { 
 
@@ -29,7 +29,7 @@ pipeline {
                 } 
             }
         } 
-        stage('Pull our image') { 
+        stage('Pull the image') { 
             steps { 
                 script { 
                         docker.withRegistry('https://registry.hub.docker.com', registryCredential) {
@@ -38,7 +38,7 @@ pipeline {
                      }
                 } 
             }
-         stage('Run as container') { 
+         stage('Run as images container') { 
             steps { 
                 script { 
                     docker.withRegistry('https://registry.hub.docker.com', registryCredential) {
