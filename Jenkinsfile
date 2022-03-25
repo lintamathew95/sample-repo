@@ -1,59 +1,76 @@
 pipeline { 
+
     environment { 
-        registry = "dockeraccountformee/myrepo" 
-        registryCredential = 'dockeraccountformee-dockerhub' 
+
+        registry = "YourDockerhubAccount/YourRepository" 
+
+        registryCredential = 'dockerhub_id' 
+
+
         dockerImage = '' 
+
     }
+
     agent any 
     stages { 
-        stage('Clone the repo') { 
+        stage('Cloning our Git') { 
+
             steps { 
-                git 'https://github.com/lintamathew95/sample-repo.git' 
+
+                git 'https://github.com/YourGithubAccount/YourGithubRepository.git' 
+
             }
+
         } 
-        stage('Building the docker image') { 
+
+        stage('Building our image') { 
+
             steps { 
+
                 script { 
-                 dockerImage = docker.build registry + ":$BUILD_NUMBER"
+
+                    dockerImage = docker.build registry + ":$BUILD_NUMBER" 
+
                 }
+
             } 
-      }
-        stage('Deploy the image') { 
+        }
+
+        stage('Deploy our image') { 
+
             steps { 
+
                 script { 
+
 
                     docker.withRegistry( '', registryCredential ) { 
+
                         dockerImage.push() 
-                   }
+
+                    }
 
                 } 
+
             }
+
         } 
-        stage('Pull the image') { 
-            steps { 
-                script { 
-                        docker.withRegistry('https://registry.hub.docker.com', registryCredential) {
-                           dockerImage.pull()
-                        }
-                     }
-                } 
-            }
-         stage('Run as images container') { 
-            steps { 
-                script { 
-                    docker.withRegistry('https://registry.hub.docker.com', registryCredential) {
-                            dockerImage.run()
-                           
-                        }
-                     }
-                } 
-            }
-              
+
         stage('Cleaning up') { 
             steps { 
+
                 sh "docker rmi $registry:$BUILD_NUMBER" 
+
+
             }
-        }
+
+        } 
+
+
     }
+
+
 }
+
+
+
 
