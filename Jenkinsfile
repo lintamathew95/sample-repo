@@ -29,25 +29,25 @@ pipeline {
                 } 
             }
         } 
-        stage('Pull the image') { 
-            steps { 
-                script { 
-                        docker.withRegistry('https://registry.hub.docker.com', registryCredential) {
-                           dockerImage.pull()
-                        }
-                     }
-                } 
-            }
-         stage('Run as images container') { 
-            steps { 
-                script { 
-                    docker.withRegistry('https://registry.hub.docker.com', registryCredential) {
-                            dockerImage.run()
+//         stage('Pull the image') { 
+//             steps { 
+//                 script { 
+//                         docker.withRegistry('https://registry.hub.docker.com', registryCredential) {
+//                            dockerImage.pull()
+//                         }
+//                      }
+//                 } 
+//             }
+//          stage('Run as images container') { 
+//             steps { 
+//                 script { 
+//                     docker.withRegistry('https://registry.hub.docker.com', registryCredential) {
+//                             dockerImage.run()
                            
-                        }
-                     }
-                } 
-            }
+//                         }
+//                      }
+//                 } 
+//             }
               
         stage('Cleaning up') { 
             steps { 
